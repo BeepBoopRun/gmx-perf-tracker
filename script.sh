@@ -8,7 +8,7 @@ fi
 output_filename="timestamped_$1"
 
 echo "simulation performance tracking enabled, tracking file $1, output saved in file $output_filename"
-
+truncate -s 0 $output_filename
 inotifywait -q -m -e modify . |
 	while read -r directory events filename; do
 		if [ "$filename" = "$1" ]; then
